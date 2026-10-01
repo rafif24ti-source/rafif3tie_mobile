@@ -8,7 +8,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.rafif_3tie_mobile.databinding.ActivityMainBinding
 import com.example.rafif_3tie_mobile.pertemuan_4.FourthActivity
-import kotlin.jvm.java
+import com.example.rafif_3tie_mobile.pertemuan_5.FifthActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,19 +23,32 @@ class MainActivity : AppCompatActivity() {
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            v.setPadding(
+                systemBars.left,
+                systemBars.top,
+                systemBars.right,
+                systemBars.bottom
+            )
             insets
         }
 
+        // Tombol Pertemuan 4
         binding.btnToFourth.setOnClickListener {
             val intent = Intent(this, FourthActivity::class.java)
 
-            /*tambahkan bagian berikut*/
             intent.putExtra("name", "Politeknik Caltex Riau")
             intent.putExtra("from", "Rumbai")
             intent.putExtra("age", 25)
 
             startActivity(intent)
         }
+
+        // Tombol Pertemuan 5
+        binding.btnToFifth.setOnClickListener {
+            val intent = Intent(this, FifthActivity::class.java)
+            startActivity(intent)
+        }
+
+
     }
 }
