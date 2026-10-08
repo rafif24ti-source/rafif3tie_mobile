@@ -3,6 +3,7 @@ package com.example.rafif_3tie_mobile
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -48,7 +49,34 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, FifthActivity::class.java)
             startActivity(intent)
         }
+        // Tombol Logout
+        binding.btnLogout.setOnClickListener {
 
+            AlertDialog.Builder(this)
+                .setTitle("Logout")
+                .setMessage("Apakah Anda yakin ingin logout?")
+                .setPositiveButton("Ya") { dialog, _ ->
+
+                    // Ambil SharedPreferences
+                    val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+
+                    // Hapus data login
+                    val editor = sharedPref.edit()
+                    editor.clear()
+                    editor.apply()
+
+                    dialog.dismiss()
+
+                    // Kembali ke AuthActivity
+                    val intent = Intent(this, AuthActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or
+                            Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+                    startActivity(intent)
+                }
+                .setNegativeButton("Tidak", null)
+                .show()
+        }
 
     }
 }
