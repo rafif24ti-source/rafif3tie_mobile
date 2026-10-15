@@ -1,9 +1,11 @@
-package com.example.rafif_3tie_mobile
+package com.example.rafif_3tie_mobile.Home.pertemuan_6
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.example.rafif_3tie_mobile.MainActivity
+import com.example.rafif_3tie_mobile.R
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

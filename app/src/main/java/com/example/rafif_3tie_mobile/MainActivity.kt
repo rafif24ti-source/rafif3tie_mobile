@@ -1,3 +1,4 @@
+
 package com.example.rafif_3tie_mobile
 
 import android.content.Intent
@@ -8,8 +9,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.rafif_3tie_mobile.databinding.ActivityMainBinding
-import com.example.rafif_3tie_mobile.pertemuan_4.FourthActivity
-import com.example.rafif_3tie_mobile.pertemuan_5.FifthActivity
+import com.example.rafif_3tie_mobile.Home.pertemuan_4.FourthActivity
+import com.example.rafif_3tie_mobile.Home.pertemuan_5.FifthActivity
+import com.example.rafif_3tie_mobile.Home.pertemuan_6.AuthActivity
+import com.example.rafif_3tie_mobile.Home.pertemuan_7.SeventhActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,13 +26,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            val systemBars = insets.getInsets(
+                WindowInsetsCompat.Type.systemBars()
+            )
+
             v.setPadding(
                 systemBars.left,
                 systemBars.top,
                 systemBars.right,
                 systemBars.bottom
             )
+
             insets
         }
 
@@ -49,16 +56,25 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, FifthActivity::class.java)
             startActivity(intent)
         }
+
+        // Tombol Pertemuan 7
+        binding.btnToSeventh.setOnClickListener {
+            val intent = Intent(this, SeventhActivity::class.java)
+            startActivity(intent)
+        }
+
         // Tombol Logout
         binding.btnLogout.setOnClickListener {
-
             AlertDialog.Builder(this)
                 .setTitle("Logout")
                 .setMessage("Apakah Anda yakin ingin logout?")
                 .setPositiveButton("Ya") { dialog, _ ->
 
                     // Ambil SharedPreferences
-                    val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+                    val sharedPref = getSharedPreferences(
+                        "user_pref",
+                        MODE_PRIVATE
+                    )
 
                     // Hapus data login
                     val editor = sharedPref.edit()
@@ -69,14 +85,15 @@ class MainActivity : AppCompatActivity() {
 
                     // Kembali ke AuthActivity
                     val intent = Intent(this, AuthActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or
-                            Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+                    intent.flags =
+                        Intent.FLAG_ACTIVITY_NEW_TASK or
+                                Intent.FLAG_ACTIVITY_CLEAR_TASK
 
                     startActivity(intent)
                 }
                 .setNegativeButton("Tidak", null)
                 .show()
         }
-
     }
 }
