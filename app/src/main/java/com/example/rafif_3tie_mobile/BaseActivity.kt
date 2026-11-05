@@ -6,6 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
 import com.example.rafif_3tie_mobile.Home.HomeFragment
 import com.example.rafif_3tie_mobile.Message.MessageFragment
 import com.example.rafif_3tie_mobile.More.MoreFragment
@@ -20,7 +21,7 @@ class BaseActivity : AppCompatActivity() {
 
         enableEdgeToEdge()
 
-        // Inisialisasi ViewBinding
+        // Inisialisasi ViewBinding (dari activity_base.xml)
         binding = ActivityBaseBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -45,39 +46,24 @@ class BaseActivity : AppCompatActivity() {
             replaceFragment(HomeFragment())
         }
 
-        // Mengatur klik Bottom Navigation
+        // Klik Bottom Navigation (id: bottom_nav_view)
         binding.bottomNavView.setOnItemSelectedListener { item ->
             when (item.itemId) {
 
                 R.id.home -> {
-                    Toast.makeText(
-                        this,
-                        "Home Clicked",
-                        Toast.LENGTH_SHORT
-                    ).show()
-
+                    Toast.makeText(this, "Home Clicked", Toast.LENGTH_SHORT).show()
                     replaceFragment(HomeFragment())
                     true
                 }
 
                 R.id.message -> {
-                    Toast.makeText(
-                        this,
-                        "Message Clicked",
-                        Toast.LENGTH_SHORT
-                    ).show()
-
+                    Toast.makeText(this, "Message Clicked", Toast.LENGTH_SHORT).show()
                     replaceFragment(MessageFragment())
                     true
                 }
 
                 R.id.more -> {
-                    Toast.makeText(
-                        this,
-                        "More Clicked",
-                        Toast.LENGTH_SHORT
-                    ).show()
-
+                    Toast.makeText(this, "More Clicked", Toast.LENGTH_SHORT).show()
                     replaceFragment(MoreFragment())
                     true
                 }
@@ -87,6 +73,10 @@ class BaseActivity : AppCompatActivity() {
         }
     }
 
-    // Fungsi untuk mengganti Fragment
-
+    // Mengganti Fragment di FrameLayout (id: fragment_container)
+    private fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(binding.fragmentContainer.id, fragment)
+            .commit()
+    }
 }

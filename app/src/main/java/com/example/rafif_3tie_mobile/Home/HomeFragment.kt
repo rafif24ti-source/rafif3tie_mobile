@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.rafif_3tie_mobile.Home.pertemuan_10.TenthActivity
 import com.example.rafif_3tie_mobile.Home.pertemuan_4.FourthActivity
 import com.example.rafif_3tie_mobile.Home.pertemuan_5.FifthActivity
 import com.example.rafif_3tie_mobile.Home.pertemuan_7.SeventhActivity
@@ -48,6 +49,10 @@ class HomeFragment : Fragment() {
         // Tombol Pertemuan 7
         binding.btnToSeventh.setOnClickListener {
             val intent = Intent(requireContext(), SeventhActivity::class.java)
+            startActivity(intent)
+        }
+        binding.btnToTenth.setOnClickListener {
+            val intent = Intent(requireContext(), TenthActivity::class.java)
             startActivity(intent)
         }
     }

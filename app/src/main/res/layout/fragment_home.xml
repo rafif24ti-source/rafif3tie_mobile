@@ -7,6 +7,16 @@
     android:layout_height="match_parent"
     tools:context=".Home.HomeFragment">
 
+    <View
+        android:id="@+id/background_header"
+        android:layout_width="0dp"
+        android:layout_height="220dp"
+        android:background="@drawable/bg_header_wave"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Awal rantai vertikal: berada di tengah area di bawah header -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -16,13 +26,14 @@
         app:layout_constraintBottom_toTopOf="@id/btnToFourth"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8" />
+        app:layout_constraintTop_toBottomOf="@id/background_header"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <Button
         android:id="@+id/btnToFourth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:backgroundTint="@color/merah"
         android:text="Ke Pertemuan Empat"
         app:layout_constraintBottom_toTopOf="@id/btnToFifth"
@@ -34,6 +45,7 @@
         android:id="@+id/btnToFifth"
         android:layout_width="178dp"
         android:layout_height="43dp"
+        android:layout_marginTop="16dp"
         android:backgroundTint="@color/kuning"
         android:text="Pertemuan 5"
         app:layout_constraintBottom_toTopOf="@id/btnToSeventh"
@@ -47,19 +59,34 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Pertemuan 7"
+        app:layout_constraintBottom_toTopOf="@id/btnToTenth"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnToFifth" />
 
+    <Button
+        android:id="@+id/btnToTenth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#D32F2F"
+        android:text="Pertemuan 10"
+        app:layout_constraintBottom_toTopOf="@id/homeDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnToSeventh" />
+
+    <!-- Akhir rantai vertikal -->
     <TextView
         android:id="@+id/homeDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Ini Fragment Home"
+        android:layout_marginTop="84dp"
+        android:text=""
         android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnToSeventh" />
+        app:layout_constraintTop_toBottomOf="@id/btnToTenth" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

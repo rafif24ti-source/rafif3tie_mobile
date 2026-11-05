@@ -70,30 +70,20 @@ class MainActivity : AppCompatActivity() {
                 .setMessage("Apakah Anda yakin ingin logout?")
                 .setPositiveButton("Ya") { dialog, _ ->
 
-                    // Ambil SharedPreferences
-                    val sharedPref = getSharedPreferences(
-                        "user_pref",
-                        MODE_PRIVATE
-                    )
-
-                    // Hapus data login
-                    val editor = sharedPref.edit()
-                    editor.clear()
-                    editor.apply()
+                    val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+                    sharedPref.edit().clear().apply()
 
                     dialog.dismiss()
 
-                    // Kembali ke AuthActivity
                     val intent = Intent(this, AuthActivity::class.java)
-
                     intent.flags =
                         Intent.FLAG_ACTIVITY_NEW_TASK or
                                 Intent.FLAG_ACTIVITY_CLEAR_TASK
 
-                    startActivity(intent)
-                }
+                    startActivity(intent)   // <-- tanda ) wajib ada
+                }                           // <-- tanda } penutup lambda "Ya" (yang hilang)
                 .setNegativeButton("Tidak", null)
                 .show()
-        }
-    }
-}
+        }                                   // <-- penutup setOnClickListener
+    }                                       // <-- penutup onCreate
+}                                           // <-
