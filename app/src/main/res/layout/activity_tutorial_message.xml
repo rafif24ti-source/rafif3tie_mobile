@@ -37,7 +37,7 @@
         <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
             android:id="@+id/dot_indicator"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:laayout_height="wrap_content"
             android:layout_marginBottom="100dp"
             app:dotsColor="@color/black"
             app:dotsCornerRadius="10dp"
