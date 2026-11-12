@@ -17,6 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Awal rantai vertikal: berada di tengah area di bawah header -->
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -88,5 +89,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnToTenth" />
+
+    <Button
+        android:id="@+id/btnToEleventh"
+        android:layout_width="184dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="72dp"
+        android:text="Pertemuan 11"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnToTenth" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

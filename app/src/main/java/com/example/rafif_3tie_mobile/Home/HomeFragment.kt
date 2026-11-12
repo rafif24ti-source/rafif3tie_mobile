@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.rafif_3tie_mobile.Home.pertemuan_10.TenthActivity
+import com.example.rafif_3tie_mobile.Home.pertemuan_11.EleventhActivity
 import com.example.rafif_3tie_mobile.Home.pertemuan_4.FourthActivity
 import com.example.rafif_3tie_mobile.Home.pertemuan_5.FifthActivity
 import com.example.rafif_3tie_mobile.Home.pertemuan_7.SeventhActivity
@@ -53,6 +54,10 @@ class HomeFragment : Fragment() {
         }
         binding.btnToTenth.setOnClickListener {
             val intent = Intent(requireContext(), TenthActivity::class.java)
+            startActivity(intent)
+        }
+        binding.btnToEleventh.setOnClickListener {
+            val intent = Intent(requireContext(), EleventhActivity::class.java)
             startActivity(intent)
         }
     }
