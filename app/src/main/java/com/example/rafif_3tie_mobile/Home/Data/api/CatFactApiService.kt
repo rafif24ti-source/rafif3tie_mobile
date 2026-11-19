@@ -1,6 +1,6 @@
-package com.example.rafif_3tie_mobile.Data.api
+package com.example.rafif_3tie_mobile.Home.Data.api
 
-import com.example.rafif_3tie_mobile.Data.model.CatFactModel
+import com.example.rafif_3tie_mobile.Home.Data.model.CatFactModel
 import retrofit2.http.GET
 
 interface CatFactApiService {

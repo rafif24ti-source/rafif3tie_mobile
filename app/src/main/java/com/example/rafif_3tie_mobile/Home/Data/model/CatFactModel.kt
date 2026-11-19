@@ -1,4 +1,4 @@
-package com.example.rafif_3tie_mobile.Data.model
+package com.example.rafif_3tie_mobile.Home.Data.model
 
 data class CatFactModel(
     val fact: String,

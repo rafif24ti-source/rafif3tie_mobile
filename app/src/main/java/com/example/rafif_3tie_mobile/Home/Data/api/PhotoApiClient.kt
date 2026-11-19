@@ -1,16 +1,16 @@
-package com.example.rafif_3tie_mobile.Data.api
+package com.example.rafif_3tie_mobile.Home.Data.api
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object CatFactApiClient {
-    private const val BASE_URL = "https://catfact.ninja"
+object PhotoApiClient {
+    private const val BASE_URL = "https://picsum.photos/v2/"
 
-    val apiService: CatFactApiService by lazy {
+    val apiService: PhotoApiService by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(CatFactApiService::class.java)
+            .create(PhotoApiService::class.java)
     }
 }

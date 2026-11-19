@@ -5,15 +5,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import com.example.rafif_3tie_mobile.Data.api.CatFactApiClient
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.rafif_3tie_mobile.Home.Data.api.CatFactApiClient
+import com.example.rafif_3tie_mobile.Home.Data.api.PhotoApiClient
+import com.example.rafif_3tie_mobile.Home.Photo.PhotoAdapter
 import com.example.rafif_3tie_mobile.Home.pertemuan_10.TenthActivity
 import com.example.rafif_3tie_mobile.Home.pertemuan_11.EleventhActivity
 import com.example.rafif_3tie_mobile.Home.pertemuan_4.FourthActivity
 import com.example.rafif_3tie_mobile.Home.pertemuan_5.FifthActivity
 import com.example.rafif_3tie_mobile.Home.pertemuan_7.SeventhActivity
-import com.example.rafif_3tie_mobile.R
 import com.example.rafif_3tie_mobile.databinding.FragmentHomeBinding
 import kotlinx.coroutines.launch
 
@@ -66,6 +70,9 @@ class HomeFragment : Fragment() {
         binding.btnRefresh.setOnClickListener {
             loadCatFact()
         }
+
+        loadCatFact()
+        loadPhoto()
     }
     private fun loadCatFact() {
         lifecycleScope.launch {
@@ -74,6 +81,27 @@ class HomeFragment : Fragment() {
                 binding.tvCatFact.text = "\"${response.fact}\""
             } catch (e: Exception) {
                 binding.tvCatFact.text = "Gagal mengambil fakta kucing."
+            }
+        }
+    }
+    private fun loadPhoto() {
+        lifecycleScope.launch {
+            try {
+                val photos = PhotoApiClient.apiService.getPhotos()
+                val adapter = PhotoAdapter(photos)
+                binding.rvGallery.adapter = adapter
+
+                /** List Tampil Vertical*/
+                //binding.rvGallery.layoutManager = LinearLayoutManager(requireContext())
+
+                /** List Tampil Horizontal */
+                //binding.rvGallery.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+                /** List Tampil Grid */
+                binding.rvGallery.layoutManager = GridLayoutManager(requireContext(), 2)
+
+            } catch (e: Exception) {
+                Toast.makeText(requireContext(), "Gagal memuat gambar", Toast.LENGTH_SHORT).show()
             }
         }
     }
