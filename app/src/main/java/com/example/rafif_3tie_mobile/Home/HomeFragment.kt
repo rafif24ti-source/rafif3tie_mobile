@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import com.example.rafif_3tie_mobile.Data.api.CatFactApiClient
 import com.example.rafif_3tie_mobile.Home.pertemuan_10.TenthActivity
 import com.example.rafif_3tie_mobile.Home.pertemuan_11.EleventhActivity
 import com.example.rafif_3tie_mobile.Home.pertemuan_4.FourthActivity
@@ -13,6 +15,7 @@ import com.example.rafif_3tie_mobile.Home.pertemuan_5.FifthActivity
 import com.example.rafif_3tie_mobile.Home.pertemuan_7.SeventhActivity
 import com.example.rafif_3tie_mobile.R
 import com.example.rafif_3tie_mobile.databinding.FragmentHomeBinding
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -59,6 +62,19 @@ class HomeFragment : Fragment() {
         binding.btnToEleventh.setOnClickListener {
             val intent = Intent(requireContext(), EleventhActivity::class.java)
             startActivity(intent)
+        }
+        binding.btnRefresh.setOnClickListener {
+            loadCatFact()
+        }
+    }
+    private fun loadCatFact() {
+        lifecycleScope.launch {
+            try {
+                val response = CatFactApiClient.apiService.getCatFact()
+                binding.tvCatFact.text = "\"${response.fact}\""
+            } catch (e: Exception) {
+                binding.tvCatFact.text = "Gagal mengambil fakta kucing."
+            }
         }
     }
 }
